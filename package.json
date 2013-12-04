@@ -12,7 +12,7 @@
       }
     },
     "travis-cov": {
-      "threshold": 90
+      "threshold": 100
     }
   },
   "dependencies": {
@@ -24,7 +24,8 @@
     "travis-cov": "*",
     "coveralls": "*",
     "mocha-lcov-reporter": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "benchmark": "*"
   },
   "homepage": "https://github.com/fengmk2/node-murmurhash",
   "repository": {

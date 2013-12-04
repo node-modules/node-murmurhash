@@ -36,4 +36,8 @@ describe('murmurhash.test.js', function () {
     murmurhash(wantBytes).should.equal(2351022266);
     parseInt(murmurhash(wantBytes) % 1023, 10).should.equal(494);
   });
+
+  it('should support not string type', function () {
+    murmurhash('1').should.equal(murmurhash(1));
+  });
 });

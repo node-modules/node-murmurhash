@@ -23,6 +23,20 @@ var murmurhash = require('node-murmurhash');
 murmurhash('hello 中国', 97); // 1248731102
 ```
 
+## Benchmark
+
+```bash
+$ node test/benchmark.js
+3389647783
+3389647783
+3864203294
+3300337389
+murmurhash(ascii) x 3,528,969 ops/sec ±4.52% (85 runs sampled)
+murmurhash2js(ascii) x 4,386,007 ops/sec ±2.50% (93 runs sampled)
+murmurhash(utf8) x 3,631,370 ops/sec ±3.10% (94 runs sampled)
+murmurhash2js(utf8) x 2,514,194 ops/sec ±1.43% (94 runs sampled)
+```
+
 ## License
 
 (The MIT License)
