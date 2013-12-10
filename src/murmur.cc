@@ -1,5 +1,3 @@
-#include <sys/types.h>
-#include <node.h>
 #include "nan.h"
 #include "murmurhash.h"
 
