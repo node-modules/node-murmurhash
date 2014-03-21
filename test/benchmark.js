@@ -15,9 +15,12 @@ var Benchmark = require('benchmark');
 var murmurhash = require('../');
 
 var MURMURHASH_M = 0x5bd1e995;
-function murmurhash2js(key) {
+function murmurhash2js(key, seed) {
+  if (typeof seed !== 'number') {
+    seed = 97;
+  }
   var l = key.length;
-  var h = 97 ^ l;
+  var h = seed ^ l;
   var i = 0;
   var k = null;
 
@@ -60,10 +63,12 @@ var utf8 = new Buffer([
   -98, -127, -25, -69, -110, -25, -122, -108, -24, -98, -115, -28, -72, -109,
   -27, -115, -106, -27, -70, -105, 95, 112
 ]);
-console.log(murmurhash2js(ascii));
-console.log(murmurhash(ascii));
-console.log(murmurhash2js(utf8));
-console.log(murmurhash(utf8));
+
+console.log('murmurhash2js', murmurhash2js(ascii));
+console.log('murmurhash', murmurhash(ascii));
+
+console.log('murmurhash2js', murmurhash2js(utf8));
+console.log('murmurhash', murmurhash(utf8));
 
 var suite = new Benchmark.Suite();
 suite

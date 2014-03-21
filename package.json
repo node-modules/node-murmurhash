@@ -6,26 +6,25 @@
   "scripts": {
     "test": "make test-all",
     "blanket": {
-      "pattern": "node-murmurhash/lib",
-      "data-cover-flags": {
-        "debug": false
-      }
+      "pattern": "node-murmurhash/lib"
     },
     "travis-cov": {
       "threshold": 100
     }
   },
   "dependencies": {
-    "nan": "0.6.0"
+    "nan": "0.8.0"
   },
   "devDependencies": {
-    "should": "*",
+    "autod": "*",
+    "benchmark": "1.0.0",
     "blanket": "*",
-    "travis-cov": "*",
     "coveralls": "*",
-    "mocha-lcov-reporter": "*",
+    "jshint": "*",
     "mocha": "*",
-    "benchmark": "*"
+    "mocha-lcov-reporter": "*",
+    "should": "3.2.0-beta1",
+    "travis-cov": "*"
   },
   "homepage": "https://github.com/fengmk2/node-murmurhash",
   "repository": {

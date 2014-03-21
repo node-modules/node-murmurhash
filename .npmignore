@@ -5,3 +5,5 @@ Makefile
 .travis.yml
 logo.png
 build/
+.jshint*
+coverage/
