@@ -37,6 +37,49 @@ murmurhash(utf8) x 3,631,370 ops/sec ±3.10% (94 runs sampled)
 murmurhash2js(utf8) x 2,514,194 ops/sec ±1.43% (94 runs sampled)
 ```
 
+## Totoro Cross platform test
+
+```bash
+$ totoro --runner test/murmurhash.test.js \
+	-b 'linux/node/0.11,linux/node/0.10,windowsXP/node/0.11,windows7/node/0.11,windowsXP/node/0.10,windows7/node/0.10'
+info tgz.js:42 | tgz /Users/mk2/git/node-murmurhash/ by req: /test/murmurhash.test.js?__totoro_root_tgz=true
+info index.js:162 | proxyRes, path: /test/murmurhash.test.js?__totoro_root_tgz=true, status: 200, body size: 78760
+info index.js:124 | Labor < linux/node/0.11 > finished order.
+info index.js:124 | Labor < linux/node/0.10 > finished order.
+info index.js:124 | Labor < windowsXP/node/0.10 > finished order.
+info index.js:124 | Labor < windowsXP/node/0.11 > finished order.
+info index.js:124 | Labor < windows7/node/0.10 > finished order.
+info index.js:124 | Labor < windows7/node/0.11 > finished order.
+
+  node 0.10 / linux 2.6
+  Passed all of 2 tests in 623ms
+    > [runner] ip: 10.232.19.167, driver version: 0.1.10, node version: v0.10.29
+
+  node 0.11 / linux 2.6
+  Passed all of 2 tests in 892ms
+    > [runner] ip: 10.125.6.246, driver version: 0.1.10, node version: v0.11.12
+
+  node 0.10 / windows7 7
+  Passed all of 2 tests in 1172ms
+    > [runner] ip: 10.15.52.89, driver version: 0.1.10, node version: v0.10.29
+
+  node 0.11 / windows7 7
+  Passed all of 2 tests in 1344ms
+    > [runner] ip: 10.15.52.89, driver version: 0.1.10, node version: v0.11.12
+
+  node 0.10 / windowsXP XP
+  Passed all of 2 tests in 2485ms
+    > [runner] ip: 10.15.52.88, driver version: 0.1.10, node version: v0.10.29
+
+  node 0.11 / windowsXP XP
+  Passed all of 2 tests in 2718ms
+    > [runner] ip: 10.15.52.88, driver version: 0.1.10, node version: v0.11.12
+
+===============================
+  Passed on all of 6 browsers
+===============================
+```
+
 ## License
 
 (The MIT License)

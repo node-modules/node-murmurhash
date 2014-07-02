@@ -4,7 +4,7 @@ TIMEOUT = 1000
 MOCHA_OPTS =
 
 install:
-	@npm install --registry=http://r.cnpmjs.org
+	@npm install --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist
 
 jshint: install
 	@./node_modules/.bin/jshint lib/
@@ -16,7 +16,7 @@ test: install
 		$(MOCHA_OPTS) \
 		$(TESTS)
 
-test-cov:
+test-cov cov:
 	@$(MAKE) test MOCHA_OPTS='--require blanket' REPORTER=travis-cov
 
 test-cov-html:
@@ -29,6 +29,10 @@ test-coveralls: test
 	@-$(MAKE) test MOCHA_OPTS='--require blanket' REPORTER=mocha-lcov-reporter | ./node_modules/.bin/coveralls
 
 test-all: test test-cov
+
+totoro:
+	@totoro --runner test/murmurhash.test.js \
+		-b 'linux/node/0.11,linux/node/0.10,windowsXP/node/0.11,windows7/node/0.11,windowsXP/node/0.10,windows7/node/0.10'
 
 autod: install
 	@./node_modules/.bin/autod -w --dep nan
