@@ -35,7 +35,7 @@ totoro:
 		-b 'linux/node/0.11,linux/node/0.10,windowsXP/node/0.11,windows7/node/0.11,windowsXP/node/0.10,windows7/node/0.10'
 
 autod: install
-	@./node_modules/.bin/autod -w --dep nan
+	@./node_modules/.bin/autod -w --dep nan --prefix "~"
 	@$(MAKE) install
 
 .PHONY: test

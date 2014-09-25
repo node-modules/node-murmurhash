@@ -13,6 +13,7 @@
 
 var should = require('should');
 var murmurhash = require('../');
+var murmurc = require('../build/Release/murmur');
 
 describe('murmurhash.test.js', function () {
   it('should return hash number value', function () {
@@ -39,5 +40,11 @@ describe('murmurhash.test.js', function () {
 
   it('should support not string type', function () {
     murmurhash('1').should.equal(murmurhash(1));
+  });
+
+  it('should throw type error when arguments number wrong', function () {
+    (function () {
+      murmurc.v2('1');
+    }).should.throw(TypeError, { message: 'Wrong number of arguments' });
   });
 });

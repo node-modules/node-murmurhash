@@ -3,13 +3,11 @@
 
 #define MURMURHASH_M 0x5bd1e995
 
-using namespace v8;
-
 NAN_METHOD(MurmurHash2) {
   NanScope();
 
   if (args.Length() < 2) {
-    ThrowException(Exception::TypeError(String::New("Wrong number of arguments")));
+    NanThrowTypeError("Wrong number of arguments");
     NanReturnUndefined();
   }
 
@@ -48,5 +46,5 @@ NAN_METHOD(MurmurHash2) {
   h ^= (h >> 13);
   h *= MURMURHASH_M;
   h ^= (h >> 15);
-  NanReturnValue(Number::New(h));
+  NanReturnValue(NanNew<v8::Number>(h));
 }

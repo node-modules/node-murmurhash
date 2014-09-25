@@ -1,11 +1,9 @@
 #include "nan.h"
 #include "murmurhash.h"
 
-using namespace v8;
-
-void InitAll(Handle<Object> exports) {
-  exports->Set(NanSymbol("v2"),
-      FunctionTemplate::New(MurmurHash2)->GetFunction());
+void InitAll(v8::Handle<v8::Object> exports) {
+  exports->Set(NanNew<v8::String>("v2"),
+    NanNew<v8::FunctionTemplate>(MurmurHash2)->GetFunction());
 }
 
 NODE_MODULE(murmur, InitAll)
