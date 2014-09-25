@@ -1,4 +1,12 @@
 
+1.0.0 / 2014-09-25
+==================
+
+ * bump nan to 1.3.0 support node >= 0.11.13 now
+ * add totoro ci tests
+ * add missing line to murmur.cc
+ * is hard to impl uint32 op in js
+
 0.0.4 / 2014-03-22 
 ==================
 

@@ -1,15 +1,19 @@
 {
   "name": "node-murmurhash",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.test.js"
+    "test": "npm install && mocha --check-leaks -R spec test/*.test.js",
+    "test-cov": "npm install && node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js",
+    "test-travis": "npm install && node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
+    "test-totoro": "totoro --runner test/murmurhash.test.js -b 'linux/node/0.11,linux/node/0.10,windowsXP/node/0.11,windows7/node/0.11,windowsXP/node/0.10,windows7/node/0.10'",
+    "jshint": "jshint .",
+    "autod": "autod -w --prefix '~' --dep nan && npm run cnpm",
+    "cnpm": "npm install --registry=https://registry.npm.taobao.org",
+    "contributors": "contributors -f plain -o AUTHORS"
   },
   "config": {
-    "blanket": {
-      "pattern": "node-murmurhash/lib"
-    },
     "travis-cov": {
       "threshold": 100
     }
@@ -19,25 +23,21 @@
   },
   "devDependencies": {
     "autod": "*",
-    "benchmark": "*",
-    "beautify-benchmark": "*",
-    "blanket": "*",
-    "coveralls": "*",
-    "cuint": "^0.1.5",
+    "beautify-benchmark": "~0.2.4",
+    "benchmark": "~1.0.0",
+    "istanbul-harmony": "*",
     "jshint": "*",
     "mocha": "*",
-    "mocha-lcov-reporter": "*",
-    "should": "^4.0.4",
-    "travis-cov": "*"
+    "should": "~4.0.4"
   },
-  "homepage": "https://github.com/fengmk2/node-murmurhash",
+  "homepage": "https://github.com/node-modules/node-murmurhash",
   "repository": {
     "type": "git",
-    "url": "git://github.com/fengmk2/node-murmurhash.git",
-    "web": "https://github.com/fengmk2/node-murmurhash"
+    "url": "git://github.com/node-modules/node-murmurhash.git",
+    "web": "https://github.com/node-modules/node-murmurhash"
   },
   "bugs": {
-    "url": "https://github.com/fengmk2/node-murmurhash/issues",
+    "url": "https://github.com/node-modules/node-murmurhash/issues",
     "email": "fengmk2@gmail.com"
   },
   "keywords": [
