@@ -1,6 +1,6 @@
 {
   "name": "node-murmurhash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "index.js",
   "scripts": {
@@ -13,11 +13,6 @@
     "cnpm": "npm install --registry=https://registry.npm.taobao.org",
     "contributors": "contributors -f plain -o AUTHORS"
   },
-  "config": {
-    "travis-cov": {
-      "threshold": 100
-    }
-  },
   "dependencies": {
     "nan": "~1.4.1"
   },
@@ -25,6 +20,7 @@
     "autod": "*",
     "beautify-benchmark": "~0.2.4",
     "benchmark": "~1.0.0",
+    "contributors": "~0.5.0",
     "istanbul-harmony": "*",
     "jshint": "*",
     "mocha": "*",

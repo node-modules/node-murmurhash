@@ -32,6 +32,13 @@ murmurhash V2, support utf8 Buffer.
 $ npm install node-murmurhash --save
 ```
 
+## Node versions
+
+- node 0.11.12: use `node-murmurhash@0.0.x`
+- node 0.10.x | 0.11.x: use `node-murmurhash@>=1.0.1`
+- node >= 0.12.0: use `node-murmurhash@>=1.0.1`
+- iojs >= 1.0.0: use `node-murmurhash@>=1.0.1`
+
 ## Usage
 
 ```js
@@ -42,39 +49,7 @@ murmurhash('hello 中国', 97); // 1248731102
 
 ## Benchmark
 
-### 1.0.0
-
-```bash
-$ node test/benchmark.js
-
-murmurhash2js 3389647783
-murmurhash 3389647783
-murmurhash2js 3864203294
-murmurhash 3300337389
-
-  node version: v0.11.14, date: Thu Sep 25 2014 09:38:23 GMT+0800 (CST)
-  Starting...
-  4 tests completed.
-
-  murmurhash(ascii)    x 9,042,734 ops/sec ±1.69% (92 runs sampled)
-  murmurhash2js(ascii) x 8,044,771 ops/sec ±1.21% (93 runs sampled)
-  murmurhash(utf8)     x 8,212,544 ops/sec ±1.15% (100 runs sampled)
-  murmurhash2js(utf8)  x 4,489,553 ops/sec ±1.12% (96 runs sampled)
-```
-
-### 0.0.4
-
-```bash
-$ node test/benchmark.js
-3389647783
-3389647783
-3864203294
-3300337389
-murmurhash(ascii)      x 3,528,969 ops/sec ±4.52% (85 runs sampled)
-murmurhash2js(ascii)   x 4,386,007 ops/sec ±2.50% (93 runs sampled)
-murmurhash(utf8)       x 3,631,370 ops/sec ±3.10% (94 runs sampled)
-murmurhash2js(utf8)    x 2,514,194 ops/sec ±1.43% (94 runs sampled)
-```
+@see [benchmark.md](benchmark.md)
 
 ## Totoro Cross platform test
 
@@ -121,25 +96,4 @@ info index.js:124 | Labor < windows7/node/0.11 > finished order.
 
 ## License
 
-(The MIT License)
-
-Copyright (c) 2013 - 2014 fengmk2 &lt;fengmk2@gmail.com&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT](LICENSE.txt)
