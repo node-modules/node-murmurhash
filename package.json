@@ -1,6 +1,6 @@
 {
   "name": "node-murmurhash",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
     "jshint": "jshint .",
     "autod": "autod -w --prefix '~' --dep nan && npm run cnpm",
-    "cnpm": "npm install --build-from-source --registry=https://registry.npm.taobao.org --disturl=http://npm.taobao.org/mirrors/node",
+    "cnpm": "cnpm install --build-from-source",
     "contributors": "contributors -f plain -o AUTHORS",
 
     "publish-binary": "node-pre-gyp rebuild && npm run test && node-pre-gyp package publish",
