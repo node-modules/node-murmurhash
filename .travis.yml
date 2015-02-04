@@ -1,25 +1,39 @@
-language: node_js
+language: cpp
 
 os:
   - linux
   - osx
 
-node_js:
-  - '0.11.16'
-  - '0.11.15'
-  - '0.11.14'
-  - '0.11.13'
-  # - '0.11.12'
-  - '0.10'
-  # - 'iojs-1.0'
-  # - 'iojs-1.1'
+# node_js:
+#   - '0.11.16'
+#   - '0.11.15'
+#   - '0.11.14'
+#   - '0.11.13'
+#   # - '0.11.12'
+#   - '0.10'
+#   # - 'iojs-1.0'
+#   # - 'iojs-1.1'
 
 env:
+  matrix:
+    - NODE_VERSION="0.10"
+    - NODE_VERSION="0.11.13"
+    - NODE_VERSION="0.11.14"
+    - NODE_VERSION="0.11.15"
+    - NODE_VERSION="0.11.16"
+    - NODE_VERSION="iojs-1.0"
+    - NODE_VERSION="iojs-1.1"
   global:
     - secure: Khk6mjTl/FDxX90qBW06U8pAgLAWftC3VvGn2mP03EIn1aWaP/SjwXsNZ5jY7+nBZLgbuk/rBD1oiQNoWGuwHsAWu0I6zwL7iAQyTSwNRrcvDTIw6pcy0ZJBxlpIaqDo2AxVERqnm4hpveHVwf6pIoQcBjsGEtAlf4DHarQGJaE=
     - secure: Nk8+8XI8AJPE6GE2F6p9m83fPLTYVCayxhfvXO53akp9HPZWIs4UMyBvDquLG1a8lymODgTzloD0zJUviu87J7YQqBNT0+11xL/eCg7mSmnHHC8BhUq8JxpacBGtP/roupLeoOPz960NmVEj9yPh3bXtQ+S+n2usC/xA02n4R5k=
 
 before_install:
+  - echo $NODE_VERSION
+  - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
+  - source ~/.nvm/nvm.sh
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+
   # get commit message
   - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
   # put local node-pre-gyp on PATH
