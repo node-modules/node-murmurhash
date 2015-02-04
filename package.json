@@ -4,17 +4,32 @@
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "index.js",
   "scripts": {
-    "test": "npm install && mocha --check-leaks -R spec test/*.test.js",
-    "test-cov": "npm install && node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js",
-    "test-travis": "npm install && node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
-    "test-totoro": "totoro --runner test/murmurhash.test.js -b 'linux/node/0.11,linux/node/0.10,windowsXP/node/0.11,windows7/node/0.11,windowsXP/node/0.10,windows7/node/0.10'",
+    "install": "node-pre-gyp install --fallback-to-build",
+    "test": "mocha --check-leaks -R spec test/*.test.js",
+    "test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js",
+    "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
     "jshint": "jshint .",
     "autod": "autod -w --prefix '~' --dep nan && npm run cnpm",
-    "cnpm": "npm install --registry=https://registry.npm.taobao.org",
-    "contributors": "contributors -f plain -o AUTHORS"
+    "cnpm": "npm install --build-from-source --registry=https://registry.npm.taobao.org --disturl=http://npm.taobao.org/mirrors/node",
+    "contributors": "contributors -f plain -o AUTHORS",
+
+    "publish-binary": "node-pre-gyp rebuild && npm run test && node-pre-gyp package publish",
+    "unpublish-binary": "node-pre-gyp unpublish",
+    "list-binary": "node-pre-gyp info",
+    "test-publish": "node-pre-gyp clean && npm install --fallback-to-build=false && npm run test"
   },
+  "binary": {
+    "module_name": "node-murmurhash",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "remote_path": "./{module_name}/v{version}/{configuration}/",
+    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
+    "host": "https://dn-node-pre-gyp.qbox.me",
+    "bucket": "node-pre-gyp"
+  },
+  "bundledDependencies":["node-pre-gyp-qn"],
   "dependencies": {
-    "nan": "~1.5.2"
+    "nan": "~1.5.2",
+    "node-pre-gyp-qn": "~0.6.2"
   },
   "devDependencies": {
     "autod": "*",

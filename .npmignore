@@ -1,7 +1,9 @@
 test/
 Makefile
 .travis.yml
+appveyor.yml
 logo.png
 build/
 .jshint*
 coverage/
+lib/binding

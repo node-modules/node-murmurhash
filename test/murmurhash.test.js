@@ -13,7 +13,7 @@
 
 var should = require('should');
 var murmurhash = require('../');
-var murmurc = require('../build/Release/murmur');
+var murmurc = murmurhash.murmur;
 
 describe('murmurhash.test.js', function () {
   it('should return hash number value', function () {

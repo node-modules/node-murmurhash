@@ -6,4 +6,4 @@ void InitAll(v8::Handle<v8::Object> exports) {
     NanNew<v8::FunctionTemplate>(MurmurHash2)->GetFunction());
 }
 
-NODE_MODULE(murmur, InitAll)
+NODE_MODULE(node_murmurhash, InitAll)
