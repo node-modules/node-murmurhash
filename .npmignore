@@ -5,3 +5,4 @@ logo.png
 build/
 .jshint*
 coverage/
+lib/binding
