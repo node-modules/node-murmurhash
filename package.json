@@ -14,7 +14,7 @@
     "contributors": "contributors -f plain -o AUTHORS"
   },
   "dependencies": {
-    "nan": "~1.4.1"
+    "nan": "~1.5.2"
   },
   "devDependencies": {
     "autod": "*",
@@ -24,7 +24,7 @@
     "istanbul-harmony": "*",
     "jshint": "*",
     "mocha": "*",
-    "should": "~4.0.4"
+    "should": "~4.6.3"
   },
   "homepage": "https://github.com/node-modules/node-murmurhash",
   "repository": {
