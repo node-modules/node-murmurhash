@@ -21,6 +21,7 @@ environment:
     #   msvs_toolset: 12
 
 platform:
+  - x64
   - x86
 
 install:
@@ -30,24 +31,22 @@ install:
   - SET PATH=node_modules\.bin;%PATH%
   # use 64 bit python if platform is 64 bit
   - if "%platform%" == "x64" set PATH=C:\Python27-x64;%PATH%
-  - SET ARCHPATH=
-  - if %platform% == x64 (SET ARCHPATH=x64/)
+  - if %platform% == x64 (SET ARCH=x64)
   # install node version per visual studio toolset
   - powershell Install-Product node $env:nodejs_version $env:platform
-  - SET PATH=C:\Program Files (x86)\MSBuild\%msvs_toolset%.0\bin;%PATH%
-  - SET PATH=C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\bin;%PATH%
-  - if %platform% == x64 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64
-  - if %platform% == x86 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64_x86
   - node -v
   - npm -v
-  - npm install --build-from-source
+  # http://cylonjs.com/blog/2014/11/19/creating-multiplatform-precompiled-binaries-for-node-modules/
+  # Make sure to use to pass --msvs_version=2013 to the npm install command
+  # otherwise some bindings and libraries might now be available, an error will
+  - npm install --build-from-source --msvs_version=2013
   - npm test
   # make commit message env var shorter
   - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
   - if not "%CM%" == "%CM:[republish binary]=%" npm run unpublish-binary
-  - if not "%CM%" == "%CM:[republish binary]=%" npm run publish-binary
+  - if not "%CM%" == "%CM:[republish binary]=%" node-pre-gyp package publish
   - if not "%CM%" == "%CM:[republish binary]=%" npm run test-publish-binary
-  - if not "%CM%" == "%CM:[publish binary]=%" npm run publish-binary
+  - if not "%CM%" == "%CM:[publish binary]=%" node-pre-gyp package publish
   - if not "%CM%" == "%CM:[publish binary]=%" npm run test-publish-binary
   - npm run list-binary
 
