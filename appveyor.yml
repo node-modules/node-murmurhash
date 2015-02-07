@@ -4,14 +4,21 @@ environment:
   node_pre_gyp_qn_secretAccessKey:
     secure: 32tbTZ5nzLD3XeP32imF28QLaUiS7rRsuskckvk93YptYeeYm2tv7oxRyfcKqfoR
   matrix:
+    - nodejs_version: 0.11.14
+      msvs_toolset: 12
+    - nodejs_version: "0.10"
+      msvs_toolset: 12
     # - nodejs_version: "1.1"
     - nodejs_version: "1.0"
-    - nodejs_version: "0.12"
+      msvs_toolset: 12
+    # - nodejs_version: "0.12"
+    #   msvs_toolset: 12
     - nodejs_version: 0.11.16
+      msvs_toolset: 12
     - nodejs_version: 0.11.15
-    - nodejs_version: 0.11.14
+      msvs_toolset: 12
     - nodejs_version: 0.11.13
-    - nodejs_version: 0.10.33
+      msvs_toolset: 12
 
 platform:
   - x86
@@ -23,11 +30,15 @@ install:
   # add local node-pre-gyp dir to path
   - SET PATH=node_modules\.bin;%PATH%
   # use 64 bit python if platform is 64 bit
-  # - if "%platform%" == "x64" set PATH=C:\Python27-x64;%PATH%
-  # - SET ARCHPATH=
-  # - if %platform% == x64 (SET ARCHPATH=x64/)
+  - if "%platform%" == "x64" set PATH=C:\Python27-x64;%PATH%
+  - SET ARCHPATH=
+  - if %platform% == x64 (SET ARCHPATH=x64/)
   # install node version per visual studio toolset
   - powershell Install-Product node $env:nodejs_version $env:platform
+  - SET PATH=C:\Program Files (x86)\MSBuild\%msvs_toolset%.0\bin;%PATH%
+  - SET PATH=C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\bin;%PATH%
+  - if %platform% == x64 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64
+  - if %platform% == x86 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64_x86
   - node -v
   - npm -v
   - npm install --build-from-source
