@@ -11,6 +11,7 @@ env:
     - NODE_VERSION="0.11.14"
     - NODE_VERSION="0.11.15"
     - NODE_VERSION="0.11.16"
+    - NODE_VERSION="0.12"
     - NODE_VERSION="iojs-1.0"
     - NODE_VERSION="iojs-1.1"
   global:
@@ -30,8 +31,6 @@ before_install:
   - export PATH=./node_modules/.bin/:$PATH
   # put global node-gyp on PATH
   - npm install node-gyp -g
-  # install qn so it is available for publishing
-  - npm install qn
   # figure out if we should publish
   - PUBLISH_BINARY=false
   # if we are building a tag then publish

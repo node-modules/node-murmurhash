@@ -34,10 +34,10 @@ $ npm install node-murmurhash --save
 
 ## Node versions
 
-- node 0.11.12: use `node-murmurhash@0.0.x`
-- node 0.10.x | 0.11.x: use `node-murmurhash@>=1.0.1`
-- node >= 0.12.0: use `node-murmurhash@>=1.0.1`
-- iojs >= 1.0.0: use `node-murmurhash@>=1.0.1`
+- ~~node 0.11.12: use `node-murmurhash@0.0.x`~~
+- node 0.10.x | 0.11.x: use `node-murmurhash@>=1.1.0`
+- node >= 0.12.0: use `node-murmurhash@>=1.1.0`
+- iojs >= 1.0.0: use `node-murmurhash@>=1.1.0`
 
 ## Usage
 

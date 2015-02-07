@@ -12,11 +12,11 @@
     "autod": "autod -w --prefix '~' --dep nan && npm run cnpm",
     "cnpm": "cnpm install --build-from-source",
     "contributors": "contributors -f plain -o AUTHORS",
-
+    "clean-binary": "rm -rf build lib/binary",
     "publish-binary": "node-pre-gyp rebuild && npm run test && node-pre-gyp package publish",
     "unpublish-binary": "node-pre-gyp unpublish",
     "list-binary": "node-pre-gyp info",
-    "test-publish": "node-pre-gyp clean && npm install --fallback-to-build=false && npm run test"
+    "test-publish-binary": "node-pre-gyp clean && npm install --fallback-to-build=false && npm run test"
   },
   "binary": {
     "module_name": "node-murmurhash",
@@ -32,6 +32,7 @@
     "node-pre-gyp-qn": "~0.6.2"
   },
   "devDependencies": {
+    "qn": "*",
     "autod": "*",
     "beautify-benchmark": "~0.2.4",
     "benchmark": "~1.0.0",
