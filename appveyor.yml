@@ -4,14 +4,7 @@ environment:
   node_pre_gyp_qn_secretAccessKey:
     secure: 32tbTZ5nzLD3XeP32imF28QLaUiS7rRsuskckvk93YptYeeYm2tv7oxRyfcKqfoR
   matrix:
-    - nodejs_version: 0.11.14
-      msvs_toolset: 12
-    - nodejs_version: "0.10"
-      msvs_toolset: 12
-    # - nodejs_version: "1.1"
-    - nodejs_version: "1.0"
-      msvs_toolset: 12
-    # - nodejs_version: "0.12"
+    # - nodejs_version: 0.11.14
     #   msvs_toolset: 12
     - nodejs_version: 0.11.16
       msvs_toolset: 12
@@ -19,10 +12,16 @@ environment:
       msvs_toolset: 12
     - nodejs_version: 0.11.13
       msvs_toolset: 12
+    - nodejs_version: "0.10"
+      msvs_toolset: 12
+    # - nodejs_version: "1.1"
+    # - nodejs_version: "1.0"
+    #   msvs_toolset: 12
+    # - nodejs_version: "0.12"
+    #   msvs_toolset: 12
 
 platform:
   - x86
-  - x64
 
 install:
   # add local node to path (since we install it for msvs_toolset == 14)
@@ -45,7 +44,9 @@ install:
   - npm test
   # make commit message env var shorter
   - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
-  - if not "%CM%" == "%CM:[publish binary]=%" npm run unpublish-binary
+  - if not "%CM%" == "%CM:[republish binary]=%" npm run unpublish-binary
+  - if not "%CM%" == "%CM:[republish binary]=%" npm run publish-binary
+  - if not "%CM%" == "%CM:[republish binary]=%" npm run test-publish-binary
   - if not "%CM%" == "%CM:[publish binary]=%" npm run publish-binary
   - if not "%CM%" == "%CM:[publish binary]=%" npm run test-publish-binary
   - npm run list-binary

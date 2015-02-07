@@ -39,6 +39,10 @@ $ npm install node-murmurhash --save
 - node >= 0.12.0: use `node-murmurhash@>=1.1.0`
 - iojs >= 1.0.0: use `node-murmurhash@>=1.1.0`
 
+### Windows
+
+Only support **x86**
+
 ## Usage
 
 ```js
