@@ -4,21 +4,22 @@ environment:
   node_pre_gyp_qn_secretAccessKey:
     secure: 32tbTZ5nzLD3XeP32imF28QLaUiS7rRsuskckvk93YptYeeYm2tv7oxRyfcKqfoR
   matrix:
-    # - nodejs_version: 0.11.14
-    #   msvs_toolset: 12
+    - nodejs_version: 1.2.0
+      msvs_toolset: 12
+    - nodejs_version: 1.1.0
+      msvs_toolset: 12
+    - nodejs_version: 1.0.4
+      msvs_toolset: 12
+    - nodejs_version: 0.12.0
+      msvs_toolset: 12
     - nodejs_version: 0.11.16
       msvs_toolset: 12
     - nodejs_version: 0.11.15
       msvs_toolset: 12
     - nodejs_version: 0.11.13
       msvs_toolset: 12
-    - nodejs_version: "0.10"
+    - nodejs_version: 0.10.36
       msvs_toolset: 12
-    # - nodejs_version: "1.1"
-    # - nodejs_version: "1.0"
-    #   msvs_toolset: 12
-    # - nodejs_version: "0.12"
-    #   msvs_toolset: 12
 
 platform:
   - x64
