@@ -6,15 +6,15 @@ os:
 
 env:
   matrix:
-    - NODE_VERSION="iojs-1.2"
-    - NODE_VERSION="iojs-1.1"
-    - NODE_VERSION="iojs-1.0"
-    - NODE_VERSION="0.12"
+    - NODE_VERSION="iojs-1.2" # v43
+    # - NODE_VERSION="iojs-1.1" same as 1.2
+    - NODE_VERSION="iojs-1.0" # v42
+    - NODE_VERSION="0.12" # v14
     - NODE_VERSION="0.11.16"
     - NODE_VERSION="0.11.15"
     - NODE_VERSION="0.11.14"
     - NODE_VERSION="0.11.13"
-    - NODE_VERSION="0.10"
+    - NODE_VERSION="0.10" # v11
   global:
     - secure: Khk6mjTl/FDxX90qBW06U8pAgLAWftC3VvGn2mP03EIn1aWaP/SjwXsNZ5jY7+nBZLgbuk/rBD1oiQNoWGuwHsAWu0I6zwL7iAQyTSwNRrcvDTIw6pcy0ZJBxlpIaqDo2AxVERqnm4hpveHVwf6pIoQcBjsGEtAlf4DHarQGJaE=
     - secure: Nk8+8XI8AJPE6GE2F6p9m83fPLTYVCayxhfvXO53akp9HPZWIs4UMyBvDquLG1a8lymODgTzloD0zJUviu87J7YQqBNT0+11xL/eCg7mSmnHHC8BhUq8JxpacBGtP/roupLeoOPz960NmVEj9yPh3bXtQ+S+n2usC/xA02n4R5k=
