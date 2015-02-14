@@ -23,6 +23,8 @@ platform:
   - x64
   - x86
 
+os: Visual Studio 2014 CTP4
+
 install:
   # add local node to path (since we install it for msvs_toolset == 14)
   - SET PATH=%CD%;%PATH%;
@@ -35,9 +37,16 @@ install:
   - powershell Install-Product node $env:nodejs_version $env:platform
   - node -v
   - npm -v
+  # https://github.com/mapbox/node-sqlite3/blob/master/appveyor.yml
+  - SET PATH=C:\Program Files (x86)\MSBuild\%msvs_toolset%.0\bin;%PATH%
+  - SET PATH=C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\bin;%PATH%
+  - if %platform% == x64 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64
+  - if %platform% == x86 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64_x86
   # http://cylonjs.com/blog/2014/11/19/creating-multiplatform-precompiled-binaries-for-node-modules/
   # Make sure to use to pass --msvs_version=2013 to the npm install command
   # otherwise some bindings and libraries might now be available, an error will
+  - npm install node-gyp-install
+  - node-gyp-install
   - npm install --build-from-source --msvs_version=2013
   - npm test
   # make commit message env var shorter
