@@ -30,7 +30,7 @@
   "bundledDependencies":["node-pre-gyp-qn"],
   "dependencies": {
     "nan": "~1.5.2",
-    "node-pre-gyp-qn": "~0.6.2"
+    "node-pre-gyp-qn": "~0.6.5"
   },
   "devDependencies": {
     "qn": "*",
