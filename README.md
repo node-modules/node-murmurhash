@@ -3,6 +3,7 @@ node-murmurhash
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
+[![appveyor build status][appveyor-image]][appveyor-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Gittip][gittip-image]][gittip-url]
 [![David deps][david-image]][david-url]
@@ -13,6 +14,8 @@ node-murmurhash
 [npm-url]: https://npmjs.org/package/node-murmurhash
 [travis-image]: https://img.shields.io/travis/node-modules/node-murmurhash.svg?style=flat-square
 [travis-url]: https://travis-ci.org/node-modules/node-murmurhash
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/y4xkcvpkm7ghnu8q?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/fengmk2/node-murmurhash
 [coveralls-image]: https://img.shields.io/coveralls/node-modules/node-murmurhash.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/node-modules/node-murmurhash?branch=master
 [gittip-image]: https://img.shields.io/gittip/fengmk2.svg?style=flat-square

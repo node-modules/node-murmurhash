@@ -4,11 +4,11 @@ environment:
   node_pre_gyp_qn_secretAccessKey:
     secure: 32tbTZ5nzLD3XeP32imF28QLaUiS7rRsuskckvk93YptYeeYm2tv7oxRyfcKqfoR
   matrix:
-    - nodejs_version: 1.2.0
+    - nodejs_version: 1.2
       msvs_toolset: 12
-    - nodejs_version: 1.0.4
+    - nodejs_version: 1.0
       msvs_toolset: 12
-    - nodejs_version: 0.12.0
+    - nodejs_version: 0.12
       msvs_toolset: 12
     - nodejs_version: 0.11.16
       msvs_toolset: 12
@@ -16,38 +16,26 @@ environment:
       msvs_toolset: 12
     - nodejs_version: 0.11.13
       msvs_toolset: 12
-    - nodejs_version: 0.10.36
+    - nodejs_version: 0.10
       msvs_toolset: 12
 
 platform:
   - x64
   - x86
 
-os: Visual Studio 2014 CTP4
-
 install:
   # add local node to path (since we install it for msvs_toolset == 14)
   - SET PATH=%CD%;%PATH%;
   # add local node-pre-gyp dir to path
   - SET PATH=node_modules\.bin;%PATH%
-  # use 64 bit python if platform is 64 bit
-  - if "%platform%" == "x64" set PATH=C:\Python27-x64;%PATH%
-  - if %platform% == x64 (SET ARCH=x64)
   # install node version per visual studio toolset
   - powershell Install-Product node $env:nodejs_version $env:platform
   - node -v
   - npm -v
-  # https://github.com/mapbox/node-sqlite3/blob/master/appveyor.yml
-  - SET PATH=C:\Program Files (x86)\MSBuild\%msvs_toolset%.0\bin;%PATH%
-  - SET PATH=C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\bin;%PATH%
-  - if %platform% == x64 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64
-  - if %platform% == x86 CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64_x86
-  # http://cylonjs.com/blog/2014/11/19/creating-multiplatform-precompiled-binaries-for-node-modules/
-  # Make sure to use to pass --msvs_version=2013 to the npm install command
-  # otherwise some bindings and libraries might now be available, an error will
   - npm install node-gyp-install
+  - set NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
   - node-gyp-install
-  - npm install --build-from-source --msvs_version=2013
+  - npm install --build-from-source
   - npm test
   # make commit message env var shorter
   - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
