@@ -6,9 +6,10 @@ os:
 
 env:
   matrix:
-    - NODE_VERSION="iojs-1.3" # v43
-    # - NODE_VERSION="iojs-1.2" # same as 1.3
-    # - NODE_VERSION="iojs-1.1" same as 1.3
+    - NODE_VERSION="iojs-1.4" # v43
+    # - NODE_VERSION="iojs-1.3" # same as 1.4
+    # - NODE_VERSION="iojs-1.2" # same as 1.4
+    # - NODE_VERSION="iojs-1.1" same as 1.4
     - NODE_VERSION="iojs-1.0" # v42
     - NODE_VERSION="0.12" # v14
     - NODE_VERSION="0.11.16"
