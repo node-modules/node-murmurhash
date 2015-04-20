@@ -1,4 +1,10 @@
 
+2.0.0 / 2015-04-20
+==================
+
+ * test: add more boundary test cases
+ * feat: pure javascript impl murmurhash v2. Thanks @zhangzifa
+
 1.1.0 / 2015-02-04
 ==================
 
