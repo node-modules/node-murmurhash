@@ -90,4 +90,37 @@ describe('murmurhash.test.js', function () {
     murmurhash(new Buffer('')).should.equal(3397915750);
     murmurhash(new Buffer([])).should.equal(3397915750);
   });
+
+  it('should work with boundary cases: buffer mod length equal to 0,1,2,3', function () {
+    // @zhangzifa:
+    // 要覆盖到buffer的长度对4取模后余0/1/2/3个字节的情况
+    // 并且这些尾数要分正负数情况
+
+    var b = new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    murmurhash(b).should.equal(1543150919);
+    var b1 = new Buffer([1, 2, 3, 4, 5, 6, 7, 8]);
+    murmurhash(b1).should.equal(3881185275);
+    var b2 = new Buffer([1, 2, 3, 4, 5, 6, 7]);
+    murmurhash(b2).should.equal(782934980);
+    var b3 = new Buffer([1, 2, 3, 4, 5, 6]);
+    murmurhash(b3).should.equal(764621759);
+
+    var nb = new Buffer([-1, -2, -3, -4, -5, -6, -7, -8, -9]);
+    murmurhash(nb).should.equal(1119296559);
+    var nb1 = new Buffer([-1, -2, -3, -4, -5, -6, -7, -8]);
+    murmurhash(nb1).should.equal(3332328025);
+    var nb2 = new Buffer([-1, -2, -3, -4, -5, -6, -7]);
+    murmurhash(nb2).should.equal(1302582711);
+    var nb3 = new Buffer([-1, -2, -3, -4, -5, -6]);
+    murmurhash(nb3).should.equal(85049495);
+
+    var bnb =  new Buffer([22, 145, 123, 149, 111, 156, 138, 238, 219]);
+    murmurhash(bnb).should.equal(2935442895);
+    var bnb1 = new Buffer([45, 222, 147, 158, 233, 156, 138, 238]);
+    murmurhash(bnb1).should.equal(2003139132);
+    var bnb2 = new Buffer([34, 255, 234, 168, 222, 145, 138]);
+    murmurhash(bnb2).should.equal(2619540178);
+    var bnb3 = new Buffer([88, 254, 222, 168, 134, 145]);
+    murmurhash(bnb3).should.equal(3356056646);
+  });
 });
