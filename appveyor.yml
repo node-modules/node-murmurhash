@@ -49,14 +49,6 @@ install:
   - node-gyp-install
   - npm install --build-from-source --msvs_version=2013
   - npm test
-  # make commit message env var shorter
-  - SET CM=%APPVEYOR_REPO_COMMIT_MESSAGE%
-  - if not "%CM%" == "%CM:[republish binary]=%" npm run unpublish-binary
-  - if not "%CM%" == "%CM:[republish binary]=%" node-pre-gyp package publish
-  - if not "%CM%" == "%CM:[republish binary]=%" npm run test-publish-binary
-  - if not "%CM%" == "%CM:[publish binary]=%" node-pre-gyp package publish
-  - if not "%CM%" == "%CM:[publish binary]=%" npm run test-publish-binary
-  - npm run list-binary
 
 build: OFF
 test: OFF

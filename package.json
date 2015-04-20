@@ -2,42 +2,25 @@
   "name": "node-murmurhash",
   "version": "1.1.0",
   "description": "murmurhash V2, support utf8 Buffer",
-  "main": "index.js",
+  "main": "lib/murmurhash.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
     "test": "mocha --check-leaks -R spec test/*.test.js",
     "test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js",
     "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
     "jshint": "jshint .",
-    "autod": "autod -w --prefix '~' --dep nan",
-    "cnpm": "npm install --build-from-source --registry=http://registry.npm.taobao.org --disturl=http://npm.taobao.org/mirrors/node",
-    "cnpm-iojs": "npm install --build-from-source --registry=http://registry.npm.taobao.org --disturl=http://npm.taobao.org/mirrors/iojs --loglevel=http",
-    "contributors": "contributors -f plain -o AUTHORS",
-    "clean-binary": "rm -rf build lib/binary",
-    "publish-binary": "node-pre-gyp rebuild && npm run test && node-pre-gyp package publish",
-    "unpublish-binary": "node-pre-gyp unpublish",
-    "list-binary": "node-pre-gyp info",
-    "test-publish-binary": "node-pre-gyp clean && npm install --fallback-to-build=false && npm run test"
+    "autod": "autod -w --prefix '~'",
+    "contributors": "contributors -f plain -o AUTHORS"
   },
-  "binary": {
-    "module_name": "node-murmurhash",
-    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
-    "remote_path": "./{module_name}/v{version}/{configuration}/",
-    "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "host": "https://dn-node-pre-gyp.qbox.me",
-    "bucket": "node-pre-gyp"
-  },
-  "bundledDependencies":["node-pre-gyp-qn"],
   "dependencies": {
-    "nan": "~1.5.2",
-    "node-pre-gyp-qn": "~0.6.5"
   },
   "devDependencies": {
     "qn": "*",
     "autod": "*",
     "beautify-benchmark": "~0.2.4",
     "benchmark": "~1.0.0",
-    "contributors": "~0.5.0",
     "istanbul-harmony": "*",
     "jshint": "*",
     "mocha": "*",
@@ -62,6 +45,6 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)",
+  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
   "license": "MIT"
 }

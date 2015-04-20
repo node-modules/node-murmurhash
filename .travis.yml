@@ -6,19 +6,14 @@ os:
 
 env:
   matrix:
-    - NODE_VERSION="iojs-1.3" # v43
+    - NODE_VERSION="iojs-1" # v43
     # - NODE_VERSION="iojs-1.2" # same as 1.3
     # - NODE_VERSION="iojs-1.1" same as 1.3
     - NODE_VERSION="iojs-1.0" # v42
     - NODE_VERSION="0.12" # v14
-    - NODE_VERSION="0.11.16"
-    - NODE_VERSION="0.11.15"
     - NODE_VERSION="0.11.14"
-    - NODE_VERSION="0.11.13"
+    - NODE_VERSION="0.11.12"
     - NODE_VERSION="0.10" # v11
-  global:
-    - secure: Khk6mjTl/FDxX90qBW06U8pAgLAWftC3VvGn2mP03EIn1aWaP/SjwXsNZ5jY7+nBZLgbuk/rBD1oiQNoWGuwHsAWu0I6zwL7iAQyTSwNRrcvDTIw6pcy0ZJBxlpIaqDo2AxVERqnm4hpveHVwf6pIoQcBjsGEtAlf4DHarQGJaE=
-    - secure: Nk8+8XI8AJPE6GE2F6p9m83fPLTYVCayxhfvXO53akp9HPZWIs4UMyBvDquLG1a8lymODgTzloD0zJUviu87J7YQqBNT0+11xL/eCg7mSmnHHC8BhUq8JxpacBGtP/roupLeoOPz960NmVEj9yPh3bXtQ+S+n2usC/xA02n4R5k=
 
 before_install:
   - echo $NODE_VERSION
@@ -26,43 +21,11 @@ before_install:
   - source ~/.nvm/nvm.sh
   - nvm install $NODE_VERSION
   - nvm use $NODE_VERSION
-
-  # get commit message
-  - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
-  # put local node-pre-gyp on PATH
   - export PATH=./node_modules/.bin/:$PATH
-  # put global node-gyp on PATH
-  - npm install node-gyp -g
-  # figure out if we should publish
-  - PUBLISH_BINARY=false
-  # if we are building a tag then publish
-  - if [[ $TRAVIS_BRANCH == `git describe --tags --always HEAD` ]]; then PUBLISH_BINARY=true; fi;
-  # or if we put [publish binary] in the commit message
-  - if test "${COMMIT_MESSAGE#*'[publish binary]'}" != "$COMMIT_MESSAGE"; then PUBLISH_BINARY=true; fi;
 
-install:
+script:
   # ensure source install works
-  - npm install --build-from-source
+  - npm install
   # test our module
   - npm run test-travis
   - npm install coveralls@2 && cat ./coverage/lcov.info | coveralls
-
-before_script:
-  # if publishing, do it
-  - if [[ $PUBLISH_BINARY == true ]]; then node-pre-gyp package publish; fi;
-  # cleanup
-  - node-pre-gyp clean
-  - node-gyp clean
-
-script:
-  # if publishing, test installing from remote
-  - INSTALL_RESULT=0
-  - if [[ $PUBLISH_BINARY == true ]]; then INSTALL_RESULT=$(npm install --fallback-to-build=false > /dev/null)$? || true; fi;
-  # if install returned non zero (errored) then we first unpublish and then call false so travis will bail at this line
-  - if [[ $INSTALL_RESULT != 0 ]]; then echo "returned $INSTALL_RESULT";node-pre-gyp unpublish;false; fi
-  # If success then we arrive here so lets clean up
-  - node-pre-gyp clean
-
-after_success:
-  # if success then query and display all published binaries
-  - node-pre-gyp info
