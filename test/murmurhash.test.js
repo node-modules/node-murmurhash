@@ -20,6 +20,9 @@ describe('murmurhash.test.js', function () {
     var v = murmurhash('foo');
     v.should.equal(2197288083);
 
+    murmurhash('a').should.equal(3914231485);
+    murmurhash('z').should.equal(2176583841);
+    murmurhash('hello').should.equal(867496620);
     murmurhash('hello 中国').should.equal(1248731102);
     murmurhash('hello 中国', 0).should.equal(3760673533);
     murmurhash('hello 中国', 1).should.equal(540531333);
@@ -80,5 +83,11 @@ describe('murmurhash.test.js', function () {
     ]);
     // c++ => 2673451384
     murmurhash(buf).should.equal(2673451384);
+  });
+
+  it('should emtpy string got 3397915750', function () {
+    murmurhash('').should.equal(3397915750);
+    murmurhash(new Buffer('')).should.equal(3397915750);
+    murmurhash(new Buffer([])).should.equal(3397915750);
   });
 });
