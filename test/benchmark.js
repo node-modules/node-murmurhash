@@ -15,25 +15,21 @@ var Benchmark = require('benchmark');
 var benchmarks = require('beautify-benchmark');
 var murmurhash = require('../');
 
-var ascii = new Buffer('haha, this is a key');
-var utf8 = new Buffer([
-  0, 4, 111, 108, 95, 99, 51, 95, 117, 95, 105, 112, 95, -27, -116, -105, -26,
-  -98, -127, -25, -69, -110, -25, -122, -108, -24, -98, -115, -28, -72, -109,
-  -27, -115, -106, -27, -70, -105, 95, 112
-]);
+var ascii = 'haha, this is key';
+var utf8  = 'hello 中国';
 
-console.log('murmurhash should be 3389647783: ', murmurhash(ascii));
-console.log('murmurhash utf8 should be 3300337389: ', murmurhash(utf8));
-console.log('murmurhash with custom key should be: 4040304760', murmurhash(utf8, 12333));
-console.log("murmurhash('hello 中国') should be 1248731102: %s", murmurhash(new Buffer('hello 中国')));
+console.log('murmurhash should be 335538535: ', murmurhash(ascii));
+console.log('murmurhash utf8 should be 1248731102: ', murmurhash(utf8));
+console.log('murmurhash with custom key should be 140950939:', murmurhash(utf8, 12333));
+console.log("murmurhash('hello 中国') should be 1248731102: %s", murmurhash('hello 中国'));
 
 var suite = new Benchmark.Suite();
 
 suite
-.add('murmurhash(ascii)', function () {
+.add("murmurhash('haha, this is key')", function () {
   murmurhash(ascii);
 })
-.add('murmurhash(utf8)', function () {
+.add("murmurhash('hello 中国')", function () {
   murmurhash(utf8);
 })
 .on('cycle', function(event) {

@@ -47,8 +47,8 @@ node version: v2.3.0, date: Tue Jul 21 2015 16:24:05 GMT+0800 (CST)
 Starting...
 2 tests completed.
 
-murmurhash(ascii) x 6,498,517 ops/sec ±1.91% (84 runs sampled)
-murmurhash(utf8)  x 3,720,084 ops/sec ±1.94% (86 runs sampled)
+murmurhash('haha, this is key') x 1,421,009 ops/sec ±2.25% (82 runs sampled)
+murmurhash('hello 中国')          x 1,400,272 ops/sec ±2.46% (83 runs sampled)
 
 ## License
 
