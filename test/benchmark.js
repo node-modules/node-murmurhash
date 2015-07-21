@@ -15,8 +15,8 @@ var Benchmark = require('benchmark');
 var benchmarks = require('beautify-benchmark');
 var murmurhash = require('../');
 
-var ascii = 'haha, this is key';
-var utf8  = 'hello 中国';
+var ascii = new Buffer('haha, this is key');
+var utf8  = new Buffer('hello 中国');
 
 console.log('murmurhash should be 335538535: ', murmurhash(ascii));
 console.log('murmurhash utf8 should be 1248731102: ', murmurhash(utf8));
@@ -26,10 +26,10 @@ console.log("murmurhash('hello 中国') should be 1248731102: %s", murmurhash('h
 var suite = new Benchmark.Suite();
 
 suite
-.add("murmurhash('haha, this is key')", function () {
+.add("murmurhash(new Buffer('haha, this is key'))", function () {
   murmurhash(ascii);
 })
-.add("murmurhash('hello 中国')", function () {
+.add("murmurhash(new Buffer('hello 中国'))", function () {
   murmurhash(utf8);
 })
 .on('cycle', function(event) {
