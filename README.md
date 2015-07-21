@@ -42,7 +42,13 @@ murmurhash('hello 中国', 97); // 1248731102
 
 ## Benchmark
 
-@see [benchmark.md](benchmark.md)
+cpu: 1.4 GHz Intel Core i5
+node version: v2.3.0, date: Tue Jul 21 2015 16:24:05 GMT+0800 (CST)
+Starting...
+2 tests completed.
+
+murmurhash(ascii) x 6,498,517 ops/sec ±1.91% (84 runs sampled)
+murmurhash(utf8)  x 3,720,084 ops/sec ±1.94% (86 runs sampled)
 
 ## License
 
