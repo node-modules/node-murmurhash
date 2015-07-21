@@ -1,4 +1,10 @@
 
+2.0.1 / 2015-07-21
+==================
+
+ * remove `& 0xff` when retrive byte (@alsotang)
+ * simple benchmark. clean code.
+
 2.0.0 / 2015-04-20
 ==================
 

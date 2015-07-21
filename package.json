@@ -1,6 +1,6 @@
 {
   "name": "node-murmurhash",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "lib/murmurhash.js",
   "files": [

@@ -18,9 +18,9 @@ var murmurhash = require('../');
 var ascii = new Buffer('haha, this is key');
 var utf8  = new Buffer('hello 中国');
 
-console.log('murmurhash should be 335538535: ', murmurhash(ascii));
-console.log('murmurhash utf8 should be 1248731102: ', murmurhash(utf8));
-console.log('murmurhash with custom key should be 140950939:', murmurhash(utf8, 12333));
+console.log('murmurhash should be 335538535: %s', murmurhash(ascii));
+console.log('murmurhash utf8 should be 1248731102: %s', murmurhash(utf8));
+console.log('murmurhash with custom key should be 140950939: %s', murmurhash(utf8, 12333));
 console.log("murmurhash('hello 中国') should be 1248731102: %s", murmurhash('hello 中国'));
 
 var suite = new Benchmark.Suite();
