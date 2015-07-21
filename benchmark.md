@@ -2,7 +2,7 @@
 
 version | murmurhash(utf8) | murmurhash(ascii) | language
 ---     | ---              | ---               | ---
-2.0.1   | 10,008,939       | 8,590,983         | js
+2.0.1   | 4,561,358        | 8,427,805         | js
 2.0.0   | 4,565,477        | 7,800,580         | js
 1.0.1   | 6,978,981        | 8,238,934         | c++
 1.0.0   | 8,212,544        | 9,042,734         | c++
@@ -14,16 +14,16 @@ version | murmurhash(utf8) | murmurhash(ascii) | language
 
 ```bash
 murmurhash should be 335538535: 335538535
-murmurhash utf8 should be 1248731102: 1248731102
-murmurhash with custom key should be 140950939: 140950939
+murmurhash utf8 should be 3300337389: 3300337389
+murmurhash with custom key should be 4040304760: 4040304760
 murmurhash('hello 中国') should be 1248731102: 1248731102
 
-  node version: v2.4.0, date: Tue Jul 21 2015 18:19:10 GMT+0800 (CST)
+  node version: v2.4.0, date: Tue Jul 21 2015 18:29:33 GMT+0800 (CST)
   Starting...
   2 tests completed.
 
-  murmurhash(new Buffer('haha, this is key')) x  8,590,983 ops/sec ±0.91% (90 runs sampled)
-  murmurhash(new Buffer('hello 中国'))          x 10,008,939 ops/sec ±3.03% (88 runs sampled)
+  murmurhash(new Buffer(ascii)) x 8,427,805 ops/sec ±1.42% (93 runs sampled)
+  murmurhash(new Buffer(utf8))  x 4,561,358 ops/sec ±1.49% (90 runs sampled)
 ```
 
 ### 2.0.0
