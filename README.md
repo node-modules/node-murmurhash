@@ -43,13 +43,12 @@ murmurhash('hello 中国', 97); // 1248731102
 ## Benchmark
 
 ```
-cpu: 1.4 GHz Intel Core i5
-node version: v2.3.0, date: Tue Jul 21 2015 17:35:09 GMT+0800 (CST)
+node version: v4.2.1, date: Sun Nov 15 2015 01:01:49 GMT+0800 (CST)
 Starting...
 2 tests completed.
 
-murmurhash(new Buffer('haha, this is key')) x 6,626,182 ops/sec ±1.89% (80 runs sampled)
-murmurhash(new Buffer('hello 中国'))          x 8,510,543 ops/sec ±2.24% (80 runs sampled)
+murmurhash(new Buffer(ascii)) x 21,164,676 ops/sec ±0.85% (98 runs sampled)
+murmurhash(new Buffer(utf8))  x 13,926,544 ops/sec ±0.59% (99 runs sampled)
 ```
 
 see also: [benchmark.md](benchmark.md)
