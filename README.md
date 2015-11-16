@@ -51,7 +51,7 @@ murmurhash(new Buffer(ascii)) x 21,164,676 ops/sec ±0.85% (98 runs sampled)
 murmurhash(new Buffer(utf8))  x 13,926,544 ops/sec ±0.59% (99 runs sampled)
 ```
 
-see also: [benchmark.md](test/benchmark.js)
+see also: [benchmark](test/benchmark.js)
 
 ## License
 
