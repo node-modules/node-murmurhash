@@ -43,15 +43,20 @@ murmurhash('hello 中国', 97); // 1248731102
 ## Benchmark
 
 ```
-node version: v4.2.1, date: Sun Nov 15 2015 01:01:49 GMT+0800 (CST)
-Starting...
-2 tests completed.
 
-murmurhash(new Buffer(ascii)) x 21,164,676 ops/sec ±0.85% (98 runs sampled)
-murmurhash(new Buffer(utf8))  x 13,926,544 ops/sec ±0.59% (99 runs sampled)
+node version: v4.2.1, date: Tue Dec 01 2015 14:06:01 GMT+0800 (CST)
+
+Starting...
+4 tests completed.
+
+murmurhash(new Buffer('haha, this is key')) x 18,416,878 ops/sec ±0.70% (96 runs sampled)
+murmurhash(new Buffer('快使用双节棍，嘿嘿嘿嘿。'))      x 12,709,085 ops/sec ±0.80% (93 runs sampled)
+murmurhash('haha, this is key')             x    804,541 ops/sec ±24.21% (90 runs sampled)
+murmurhash('快使用双节棍，嘿嘿嘿嘿。')                  x    797,345 ops/sec ±0.93% (92 runs sampled)
 ```
 
-see also: [benchmark](test/benchmark.js)
+see also: [benchmark.js](test/benchmark.js)
+
 
 ## License
 
