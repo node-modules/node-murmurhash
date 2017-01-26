@@ -1,15 +1,4 @@
-/*!
- * node-murmurhash - test/benchmark.js
- *
- * Copyright(c) fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)
- * MIT Licensed
- */
-
-"use strict";
-
-/**
- * Module dependencies.
- */
+'use strict';
 
 var Benchmark = require('benchmark');
 var benchmarks = require('beautify-benchmark');
