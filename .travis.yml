@@ -1,32 +1,12 @@
 sudo: false
-language: cpp
-
-os:
-  - linux
-  - osx
-
-env:
-  matrix:
-    - NODE_VERSION="iojs-1" # v43
-    # - NODE_VERSION="iojs-1.2" # same as 1.3
-    # - NODE_VERSION="iojs-1.1" same as 1.3
-    - NODE_VERSION="iojs-1.0" # v42
-    - NODE_VERSION="0.12" # v14
-    - NODE_VERSION="0.11.14"
-    - NODE_VERSION="0.11.12"
-    - NODE_VERSION="0.10" # v11
-
-before_install:
-  - echo $NODE_VERSION
-  - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
-  - source ~/.nvm/nvm.sh
-  - nvm install $NODE_VERSION
-  - nvm use $NODE_VERSION
-  - export PATH=./node_modules/.bin/:$PATH
-
+language: node_js
+node_js:
+  - '0.10'
+  - '0.12'
+  - '4'
+  - '6'
+  - '7'
 script:
-  # ensure source install works
-  - npm install
-  # test our module
-  - npm run test-travis
-  - npm install coveralls@2 && cat ./coverage/lcov.info | coveralls
+  - npm run ci
+after_script:
+  - npm i codecov && codecov

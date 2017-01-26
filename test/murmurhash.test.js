@@ -1,16 +1,4 @@
-/*!
- * node-murmurhash - test/murmurhash.test.js
- *
- * Copyright(c) 2013 fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)
- * Copyright(c) 2015 node-modules
- * MIT Licensed
- */
-
-"use strict";
-
-/**
- * Module dependencies.
- */
+'use strict';
 
 var should = require('should');
 var murmurhash = require('../');

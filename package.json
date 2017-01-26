@@ -4,27 +4,21 @@
   "description": "murmurhash V2, support utf8 Buffer",
   "main": "lib/murmurhash.js",
   "files": [
-    "lib/"
+    "lib"
   ],
   "scripts": {
     "test": "mocha --check-leaks -R spec test/*.test.js",
-    "test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js",
-    "test-travis": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks test/*.test.js",
-    "jshint": "jshint .",
-    "autod": "autod -w --prefix '~'",
-    "contributors": "contributors -f plain -o AUTHORS"
+    "ci": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --check-leaks test/*.test.js"
   },
   "dependencies": {
   },
   "devDependencies": {
     "qn": "*",
-    "autod": "*",
-    "beautify-benchmark": "~0.2.4",
-    "benchmark": "~1.0.0",
-    "istanbul-harmony": "*",
-    "jshint": "*",
+    "beautify-benchmark": "0",
+    "benchmark": "1",
+    "istanbul": "*",
     "mocha": "*",
-    "should": "~4.6.3"
+    "should": "4"
   },
   "homepage": "https://github.com/node-modules/node-murmurhash",
   "repository": {
@@ -45,6 +39,6 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "fengmk2 <fengmk2@gmail.com> (http://fengmk2.com)",
+  "author": "fengmk2 <fengmk2@gmail.com> (https://fengmk2.com)",
   "license": "MIT"
 }
